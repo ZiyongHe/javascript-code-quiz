@@ -41,23 +41,28 @@ function showScore(){
     
 }
 
-questions.forEach(quiz)
+for (i=0,i<questions.length;i++){
+    quiz(i)
+    options.addEventListener("click",fucntion(event){
+        if 
+    })
+}
 
-function quiz (){
-    headingText.textContent = "Question "+toString(indexOf(questions)+1)
-    contentText.textContent = questions[indexOf(questions)]
+function quiz (i){
+    headingText.textContent = "Question "+toString(i+1)
+    contentText.textContent = questions[i]
 
-    if (indexOf(questions)===0){
+    if (i===0){
         options[0].textContent = quesiton1opts[0]
         options[1].textContent = quesiton1opts[1]
         options[2].textContent = quesiton1opts[2]
         options[3].textContent = quesiton1opts[3]
-    } else if (indexOf(questions)===1){
+    } else if (i===1){
         options[0].textContent = quesiton2opts[0]
         options[1].textContent = quesiton2opts[1]
         options[2].textContent = quesiton2opts[2]
         options[3].textContent = quesiton2opts[3]
-    } else if (indexOf(questions)===2){
+    } else if (i===2){
         options[0].textContent = quesiton3opts[0]
         options[1].textContent = quesiton3opts[1]
         options[2].textContent = quesiton3opts[2]
