@@ -14,24 +14,32 @@ let question1opts = ['<script>','<js>','<scripting>','<javascript>']
 let question2opts = ['The <body> section', 'The <head> section', 'The <meta> section', 'The <style> section']
 let question3opts = ['<script src="xxx.js">', '<script href="xxx.js">', '<script name="xxx.js">','Not this option']
 
+
+document.getElementById('1').onclick = reply_click;
+document.getElementById('2').onclick = reply_click;
+document.getElementById('3').onclick = reply_click;
+document.getElementById('4').onclick = reply_click;
+
+
+
 startingPage()
 function startingPage (){
     headingText.textContent = 'Code Quiz'
     contentText.textContent = `Get ready! 1 min multipay choice code quiz.\n(1 wrong answer = 20 seconds consumed)`
+    document.getElementById('start').onclick = quiz;
 }
 
-function start() {
+function startTime() {
     let secondsLeft = 60
     let timerInterval = setInterval(function () {
         time.textContent = toString(secondsLeft)
         secondsLeft--
-
-      if (secondsLeft === 0) {
+    
+        
+        if (secondsLeft === 0) {
         clearInterval(timerInterval)
         showScore()
       }
-
-
     }, 1000)
 }
 
@@ -41,31 +49,39 @@ function showScore(){
     
 }
 
-for (i=0,i<questions.length;i++){
-    quiz(i)
-    options.addEventListener("click",fucntion(event){
-        if 
-    })
+
+
+function reply_click()
+{
+    if (this.id="1"){
+        score++
+    } else {
+        secondsLeft-=20
+    }
+    return score, secondsLeft
 }
 
-function quiz (i){
-    headingText.textContent = "Question "+toString(i+1)
-    contentText.textContent = questions[i]
+function quiz (){
 
-    if (i===0){
-        options[0].textContent = quesiton1opts[0]
-        options[1].textContent = quesiton1opts[1]
-        options[2].textContent = quesiton1opts[2]
-        options[3].textContent = quesiton1opts[3]
-    } else if (i===1){
-        options[0].textContent = quesiton2opts[0]
-        options[1].textContent = quesiton2opts[1]
-        options[2].textContent = quesiton2opts[2]
-        options[3].textContent = quesiton2opts[3]
-    } else if (i===2){
-        options[0].textContent = quesiton3opts[0]
-        options[1].textContent = quesiton3opts[1]
-        options[2].textContent = quesiton3opts[2]
-        options[3].textContent = quesiton3opts[3]
+    for (i=0;i<questions.length;i++){
+        headingText.textContent = "Question " + (i+1)
+        contentText.textContent = questions[i]
+
+        if (i===0){
+            options[0].textContent = question1opts[0]
+            options[1].textContent = question1opts[1]
+            options[2].textContent = question1opts[2]
+            options[3].textContent = question1opts[3]
+        } else if (i===1){
+            options[0].textContent = question2opts[0]
+            options[1].textContent = question2opts[1]
+            options[2].textContent = question2opts[2]
+            options[3].textContent = question2opts[3]
+        } else if (i===2){
+            options[0].textContent = question3opts[0]
+            options[1].textContent = question3opts[1]
+            options[2].textContent = question3opts[2]
+            options[3].textContent = question3opts[3]
+        }
     }
 }
